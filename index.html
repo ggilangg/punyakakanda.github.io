@@ -3,450 +3,183 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shopee Affiliate Prompt Generator</title>
+<title>Shopee Affiliate Generator v2</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --bg: #FFF8F0;
-    --surface: #FFFFFF;
-    --surface2: #FFF1E3;
-    --border: #F0D9C4;
-    --accent: #E8440A;
-    --accent2: #FF6B35;
-    --accent-light: #FFF0EB;
-    --text: #1A0F0A;
-    --text2: #6B4A38;
-    --text3: #A07060;
-    --green: #1A8A4A;
-    --green-bg: #EDFAF4;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+:root {
+  --bg:#FFF8F0;--surface:#FFFFFF;--surface2:#FFF1E3;--border:#F0D9C4;
+  --accent:#E8440A;--accent2:#FF6B35;--accent-light:#FFF0EB;
+  --text:#1A0F0A;--text2:#6B4A38;--text3:#A07060;
+  --green:#1A8A4A;--green-bg:#EDFAF4;--green-border:#A8DFBF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-  /* HEADER */
-  header {
-    background: var(--accent);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(232,68,10,0.25);
-  }
-  header .logo {
-    width: 32px; height: 32px;
-    background: white;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  header h1 {
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -0.3px;
-  }
-  header span {
-    margin-left: auto;
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-  }
+header{background:var(--accent);padding:1rem 2rem;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(232,68,10,.25)}
+header .logo{width:32px;height:32px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+header h1{font-size:16px;font-weight:700;color:white;letter-spacing:-.3px}
+header span{margin-left:auto;font-size:12px;color:rgba(255,255,255,.7)}
 
-  /* LAYOUT */
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
+.container{max-width:960px;margin:0 auto;padding:2rem 1.5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.full{grid-column:1/-1}
 
-  /* API KEY BANNER */
-  .api-banner {
-    grid-column: 1 / -1;
-    background: var(--accent-light);
-    border: 1px solid #FFCDB8;
-    border-radius: 12px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-  }
-  .api-banner .icon { font-size: 20px; flex-shrink: 0; }
-  .api-banner a { color: var(--accent); text-decoration: underline; }
-  .api-key-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  .api-key-row input {
-    flex: 1;
-    font-family: monospace;
-    font-size: 13px;
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: white;
-    color: var(--text);
-    outline: none;
-  }
-  .api-key-row input:focus { border-color: var(--accent); }
-  .btn-save {
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .btn-save:hover { background: #C93608; }
+.hero{text-align:center;padding:1rem 0 .5rem}
+.hero h2{font-family:'Fraunces',serif;font-size:28px;font-weight:300;font-style:italic;color:var(--text);margin-bottom:6px}
+.hero p{font-size:14px;color:var(--text2)}
+.badge{display:inline-block;background:var(--accent-light);color:var(--accent);border:1px solid #FFCDB8;border-radius:20px;font-size:11px;font-weight:700;padding:3px 10px;letter-spacing:.04em;margin-bottom:10px}
 
-  /* CARD */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-  }
-  .card-title {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 1rem;
-  }
+.api-banner{background:var(--accent-light);border:1px solid #FFCDB8;border-radius:12px;padding:14px 18px;font-size:13px}
+.api-banner .top{display:flex;align-items:flex-start;gap:12px}
+.api-banner .icon{font-size:20px;flex-shrink:0}
+.api-key-row{display:flex;gap:8px;margin-top:8px}
+.api-key-row input{flex:1;font-family:monospace;font-size:13px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:white;color:var(--text);outline:none}
+.api-key-row input:focus{border-color:var(--accent)}
+.btn-save{background:var(--accent);color:white;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn-save:hover{background:#C93608}
 
-  /* FORM */
-  label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text2);
-    margin-bottom: 5px;
-    letter-spacing: 0.03em;
-  }
-  input[type=text], select {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 14px;
-    color: var(--text);
-    background: var(--surface);
-    outline: none;
-    margin-bottom: 12px;
-    transition: border-color .15s;
-  }
-  input[type=text]:focus, select:focus { border-color: var(--accent); }
-  input::placeholder { color: var(--text3); }
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.card-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:1rem}
 
-  /* ANGLES */
-  .angle-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-bottom: 1rem;
-  }
-  .angle-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 12px;
-    cursor: pointer;
-    text-align: left;
-    transition: all .15s;
-    position: relative;
-  }
-  .angle-btn:hover {
-    border-color: var(--accent2);
-    background: var(--accent-light);
-  }
-  .angle-btn.active {
-    background: var(--accent-light);
-    border-color: var(--accent);
-    border-width: 1.5px;
-  }
-  .angle-btn .num {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text3);
-    display: block;
-    margin-bottom: 2px;
-    letter-spacing: 0.05em;
-  }
-  .angle-btn .name {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text);
-    display: block;
-    line-height: 1.3;
-  }
-  .angle-btn .desc {
-    font-size: 10px;
-    color: var(--text3);
-    display: block;
-    margin-top: 3px;
-    line-height: 1.4;
-  }
-  .angle-btn.active .num { color: var(--accent); }
-  .angle-btn.active .name { color: var(--accent); }
+label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;letter-spacing:.03em}
+input[type=text],select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);background:var(--surface);outline:none;margin-bottom:12px;transition:border-color .15s}
+input[type=text]:focus,select:focus{border-color:var(--accent)}
+input::placeholder{color:var(--text3)}
 
-  /* BUTTONS */
-  .btn-gen {
-    width: 100%;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 13px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: inherit;
-  }
-  .btn-gen:hover:not(:disabled) { background: #C93608; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,68,10,0.3); }
-  .btn-gen:disabled { background: var(--text3); cursor: not-allowed; transform: none; box-shadow: none; }
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-  /* RIGHT PANEL */
-  .right-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+/* GAYA BAHASA PILLS */
+.gaya-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.gaya-btn{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:inherit}
+.gaya-btn:hover{border-color:var(--accent2);color:var(--accent)}
+.gaya-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
 
-  /* PROMPT BOX */
-  .prompt-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 6px;
-  }
-  .prompt-area {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    min-height: 140px;
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.7;
-    white-space: pre-wrap;
-    position: relative;
-    font-family: inherit;
-  }
-  .prompt-area.empty { color: var(--text3); font-style: italic; }
+/* ANGLE */
+.angle-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
+.angle-btn{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+.angle-btn:hover{border-color:var(--accent2);background:var(--accent-light)}
+.angle-btn.active{background:var(--accent-light);border-color:var(--accent);border-width:1.5px}
+.angle-btn .num{font-size:10px;font-weight:700;color:var(--text3);display:block;margin-bottom:2px}
+.angle-btn .name{font-size:12px;font-weight:600;color:var(--text);display:block;line-height:1.3}
+.angle-btn .desc{font-size:10px;color:var(--text3);display:block;margin-top:3px;line-height:1.4}
+.angle-btn.active .num,.angle-btn.active .name{color:var(--accent)}
 
-  .btn-copy {
-    width: 100%;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .15s;
-    font-family: inherit;
-  }
-  .btn-copy:hover { border-color: var(--accent); color: var(--accent); }
+/* FORMAT TOGGLE */
+.format-toggle{display:flex;gap:6px;margin-bottom:14px}
+.fmt-btn{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;text-align:center;transition:all .15s;font-family:inherit}
+.fmt-btn:hover{border-color:var(--accent2)}
+.fmt-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
 
-  /* RESULT */
-  .result-area {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    min-height: 200px;
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.8;
-    white-space: pre-wrap;
-    position: relative;
-    font-family: inherit;
-  }
-  .result-area.empty { color: var(--text3); font-style: italic; }
-  .result-area.loading { color: var(--text3); }
+/* BUTTONS */
+.btn-gen{width:100%;background:var(--accent);color:white;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;margin-top:4px}
+.btn-gen:hover:not(:disabled){background:#C93608;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,68,10,.3)}
+.btn-gen:disabled{background:var(--text3);cursor:not-allowed}
 
-  .streaming-cursor {
-    display: inline-block;
-    width: 2px;
-    height: 14px;
-    background: var(--accent);
-    animation: blink .7s infinite;
-    vertical-align: text-bottom;
-    margin-left: 1px;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.btn-secondary{width:100%;background:var(--surface);color:var(--text2);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
 
-  .btn-generate-content {
-    width: 100%;
-    background: var(--green-bg);
-    color: var(--green);
-    border: 1px solid #A8DFBF;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .15s;
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .btn-generate-content:hover:not(:disabled) { background: #D5F4E6; }
-  .btn-generate-content:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-green{width:100%;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-green:hover:not(:disabled){background:#D5F4E6}
+.btn-green:disabled{opacity:.5;cursor:not-allowed}
 
-  .btn-copy-result {
-    width: 100%;
-    background: var(--surface);
-    color: var(--text2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 9px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .15s;
-    font-family: inherit;
-  }
-  .btn-copy-result:hover { border-color: var(--green); color: var(--green); }
+.btn-row{display:flex;gap:8px;margin-top:10px}
 
-  /* STATUS */
-  .status {
-    font-size: 12px;
-    color: var(--text3);
-    text-align: center;
-    padding: 4px 0;
-  }
-  .status.ok { color: var(--green); font-weight: 600; }
-  .status.err { color: var(--accent); font-weight: 600; }
+/* OUTPUT */
+.right-panel{display:flex;flex-direction:column;gap:1rem}
+.prompt-area{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:140px;font-size:13px;color:var(--text2);line-height:1.7;white-space:pre-wrap;font-family:inherit}
+.prompt-area.empty{color:var(--text3);font-style:italic}
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 8px 0;
-  }
+.result-area{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:220px;font-size:13px;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:inherit;overflow-x:auto}
+.result-area.empty{color:var(--text3);font-style:italic}
 
-  /* HERO TEXT */
-  .hero {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 1rem 0 0.5rem;
-  }
-  .hero h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 28px;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .hero p {
-    font-size: 14px;
-    color: var(--text2);
-  }
+.result-html{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:220px;font-size:13px;line-height:1.7}
+.result-html h3{font-size:15px;font-weight:700;margin:12px 0 6px;color:var(--text)}
+.result-html p{margin-bottom:8px;color:var(--text2)}
+.result-html ul{padding-left:18px;margin-bottom:8px}
+.result-html li{margin-bottom:4px;color:var(--text2)}
+.result-html .cta-btn{display:inline-block;background:var(--accent);color:white;padding:10px 20px;border-radius:8px;font-weight:700;text-decoration:none;margin-top:8px;font-size:13px}
 
-  .badge {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    border: 1px solid #FFCDB8;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    letter-spacing: 0.04em;
-    margin-bottom: 10px;
-  }
+.streaming-cursor{display:inline-block;width:2px;height:14px;background:var(--accent);animation:blink .7s infinite;vertical-align:text-bottom;margin-left:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-  @media (max-width: 620px) {
-    .container { grid-template-columns: 1fr; }
-    .angle-grid { grid-template-columns: 1fr 1fr; }
-    header h1 { font-size: 14px; }
-  }
+.status{font-size:12px;color:var(--text3);text-align:center;padding:4px 0}
+.status.ok{color:var(--green);font-weight:600}
+.status.err{color:var(--accent);font-weight:600}
+
+hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
+
+.tabs{display:flex;gap:4px;margin-bottom:10px}
+.tab{flex:1;padding:7px;font-size:12px;font-weight:600;border:1px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text2);cursor:pointer;text-align:center;font-family:inherit;transition:all .15s}
+.tab.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+
+.code-area{background:#1A0F0A;border-radius:10px;padding:14px;font-family:monospace;font-size:11px;color:#FFD4B8;line-height:1.6;white-space:pre-wrap;overflow-x:auto;max-height:400px;overflow-y:auto;min-height:120px}
+
+@media(max-width:640px){.container{grid-template-columns:1fr}.grid2{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">🛍️</div>
-  <h1>Shopee Affiliate Prompt Generator</h1>
+  <h1>Shopee Affiliate Generator v2</h1>
   <span>Powered by Claude AI</span>
 </header>
 
 <div class="container">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="badge">10 Angle Konten · Ibu Rumah Tangga</div>
-    <h2>Generate konten affiliate yang konvert</h2>
-    <p>Isi detail produk → pilih angle → buat prompt → generate langsung dengan Claude AI</p>
+  <div class="hero full">
+    <div class="badge">10 Angle · 5 Gaya Bahasa · Format Teks & HTML</div>
+    <h2>Konten affiliate yang jujur & konvert</h2>
+    <p>Isi detail produk → pilih angle & gaya bahasa → generate langsung dengan AI</p>
   </div>
 
-  <!-- API KEY BANNER -->
-  <div class="api-banner" id="api-banner">
-    <div class="icon">🔑</div>
-    <div>
-      <div style="font-weight:600;margin-bottom:4px;">Masukkan Anthropic API Key untuk generate konten langsung</div>
-      <div style="color:var(--text2);margin-bottom:8px;">Gratis daftar di <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> — key disimpan di browser kamu saja, tidak dikirim ke mana-mana.</div>
-      <div class="api-key-row">
-        <input type="text" id="api-key-input" placeholder="sk-ant-api03-..." />
-        <button class="btn-save" onclick="saveKey()">Simpan</button>
+  <!-- API KEY -->
+  <div class="api-banner full" id="api-banner">
+    <div class="top">
+      <div class="icon">🔑</div>
+      <div style="flex:1">
+        <div style="font-weight:600;margin-bottom:4px">Masukkan Anthropic API Key</div>
+        <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Daftar gratis di <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent)">console.anthropic.com</a> — key disimpan di browser kamu saja.</div>
+        <div class="api-key-row">
+          <input type="password" id="api-key-input" placeholder="sk-ant-api03-..." />
+          <button class="btn-save" onclick="saveKey()">Simpan</button>
+        </div>
+        <div id="key-status" class="status"></div>
       </div>
-      <div id="key-status" class="status"></div>
     </div>
   </div>
 
-  <!-- LEFT: FORM -->
+  <!-- LEFT FORM -->
   <div class="card">
     <div class="card-title">Detail Produk</div>
 
     <label>Nama Produk</label>
-    <input type="text" id="produk" placeholder="cth: Rice cooker mini 0.3L Miyako" />
+    <input type="text" id="produk" placeholder="cth: Pembersih Telinga LED Earwax" />
 
-    <label>Kategori</label>
-    <select id="kategori">
-      <option>Dapur &amp; Masak</option>
-      <option>Kebersihan Rumah</option>
-      <option>Perawatan Anak</option>
-      <option>Kecantikan &amp; Skincare</option>
-      <option>Pakaian &amp; Fashion</option>
-      <option>Makanan &amp; Minuman</option>
-      <option>Peralatan Rumah</option>
-      <option>Lainnya</option>
-    </select>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="grid2">
+      <div>
+        <label>Kategori</label>
+        <select id="kategori">
+          <option>Dapur &amp; Masak</option>
+          <option>Kebersihan Rumah</option>
+          <option>Perawatan Anak</option>
+          <option>Kecantikan &amp; Skincare</option>
+          <option>Pakaian &amp; Fashion</option>
+          <option>Makanan &amp; Minuman</option>
+          <option>Peralatan Rumah</option>
+          <option>Kesehatan</option>
+          <option>Lainnya</option>
+        </select>
+      </div>
       <div>
         <label>Harga (Rp)</label>
         <input type="text" id="harga" placeholder="89.000" />
       </div>
+    </div>
+
+    <label>Benefit Utama</label>
+    <input type="text" id="benefit" placeholder="cth: aman untuk anak, hemat listrik" />
+
+    <div class="grid2">
       <div>
         <label>Platform</label>
         <select id="platform">
@@ -454,73 +187,111 @@
           <option>Instagram caption</option>
           <option>Facebook post</option>
           <option>WhatsApp status</option>
-          <option>Thread/Twitter</option>
+          <option>Blog/artikel</option>
+          <option>Threads</option>
+        </select>
+      </div>
+      <div>
+        <label>Panjang Konten</label>
+        <select id="panjang">
+          <option>Pendek (50–80 kata)</option>
+          <option>Sedang (100–150 kata)</option>
+          <option>Panjang (200+ kata)</option>
         </select>
       </div>
     </div>
 
-    <label>Benefit Utama</label>
-    <input type="text" id="benefit" placeholder="cth: hemat listrik, cepat masak" />
-
-    <label>Panjang Konten</label>
-    <select id="panjang">
-      <option>Pendek (50–80 kata)</option>
-      <option>Sedang (100–150 kata)</option>
-      <option>Panjang (200+ kata)</option>
-    </select>
+    <hr class="divider" />
+    <div class="card-title">Gaya Bahasa</div>
+    <div class="gaya-grid" id="gaya-grid"></div>
 
     <hr class="divider" />
-    <div class="card-title" style="margin-top:4px;">Pilih Angle Konten</div>
+    <div class="card-title">Angle Konten</div>
     <div class="angle-grid" id="angle-grid"></div>
 
-    <button class="btn-gen" onclick="buildPrompt()">
-      <span>⚡</span> Build Prompt
-    </button>
+    <button class="btn-gen" onclick="buildPrompt()">⚡ Build Prompt</button>
   </div>
 
-  <!-- RIGHT: OUTPUT -->
+  <!-- RIGHT OUTPUT -->
   <div class="right-panel">
     <div class="card">
       <div class="card-title">Prompt Siap Pakai</div>
-      <div class="prompt-area empty" id="prompt-box">Prompt akan muncul di sini setelah kamu klik "Build Prompt"...</div>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <button class="btn-copy" onclick="copyPrompt()">📋 Copy Prompt</button>
-        <button class="btn-generate-content" id="btn-ai" onclick="generateContent()" disabled>✨ Generate Konten dengan AI</button>
+      <div class="prompt-area empty" id="prompt-box">Prompt akan muncul di sini setelah klik "Build Prompt"...</div>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="copyPrompt()">📋 Copy Prompt</button>
+        <button class="btn-green" id="btn-ai" onclick="generateContent()" disabled>✨ Generate dengan AI</button>
       </div>
     </div>
 
     <div class="card">
       <div class="card-title">Hasil Konten AI</div>
-      <div class="result-area empty" id="result-box">Klik "Generate Konten dengan AI" untuk membuat konten langsung menggunakan Claude...</div>
-      <div style="margin-top:10px;">
-        <button class="btn-copy-result" onclick="copyResult()">📋 Copy Hasil Konten</button>
+      <div class="tabs" id="result-tabs" style="display:none">
+        <button class="tab active" onclick="showTab('preview')">👁 Preview</button>
+        <button class="tab" onclick="showTab('code')">💻 Source Code</button>
       </div>
-      <div id="gen-status" class="status" style="margin-top:6px;"></div>
+      <div id="result-preview">
+        <div class="result-area empty" id="result-box">Klik "Generate dengan AI" untuk membuat konten...</div>
+      </div>
+      <div id="result-code" style="display:none">
+        <div class="code-area" id="code-box"></div>
+      </div>
+      <div class="btn-row" style="margin-top:10px">
+        <button class="btn-secondary" onclick="copyResult()">📋 Copy Hasil</button>
+      </div>
+      <div id="gen-status" class="status"></div>
     </div>
   </div>
 
 </div>
 
 <script>
-const angles = [
-  {num:"01", name:"Masalah Sehari-hari", desc:"Pain point nyata → produk solusi"},
-  {num:"02", name:"Hemat Budget", desc:"Value for money, irit belanja"},
-  {num:"03", name:"Review Jujur", desc:"Pro + kontra kecil, terasa asli"},
-  {num:"04", name:"Before & After", desc:"Kondisi sebelum vs sesudah"},
-  {num:"05", name:"Waktu = Emas", desc:"Hemat waktu ibu yang sibuk"},
-  {num:"06", name:"Rekomendasi Teman", desc:"Gaya WOM, organik, relatable"},
-  {num:"07", name:"Untuk Keluarga", desc:"Manfaat untuk suami/anak"},
-  {num:"08", name:"Flash Sale / Promo", desc:"Urgensi & FOMO yang wajar"},
-  {num:"09", name:"Edukasi Mini", desc:"Tips berguna + produk natural"},
-  {num:"10", name:"Cerita Emosional", desc:"Storytelling, momen relatable"},
+// ── DATA ──────────────────────────────────────────────
+const gayas = [
+  {id:'kasual', label:'😊 Kasual', desc:'Santai, aku/kamu'},
+  {id:'formal', label:'📋 Formal', desc:'Profesional, sopan'},
+  {id:'storytelling', label:'📖 Storytelling', desc:'Narasi, menyentuh'},
+  {id:'simple', label:'⚡ Simple', desc:'Singkat, to the point'},
+  {id:'edukasi', label:'🎓 Edukatif', desc:'Informatif, berimbang'},
 ];
 
+const angles = [
+  {num:'01', name:'Masalah Sehari-hari', desc:'Pain point → solusi'},
+  {num:'02', name:'Hemat Budget', desc:'Value for money'},
+  {num:'03', name:'Review Jujur', desc:'Pro + kontra kecil'},
+  {num:'04', name:'Before & After', desc:'Sebelum vs sesudah'},
+  {num:'05', name:'Waktu = Emas', desc:'Hemat waktu ibu sibuk'},
+  {num:'06', name:'Rekomendasi Teman', desc:'Gaya WOM organik'},
+  {num:'07', name:'Untuk Keluarga', desc:'Manfaat suami/anak'},
+  {num:'08', name:'Flash Sale / Promo', desc:'Urgensi & FOMO wajar'},
+  {num:'09', name:'Edukasi Mini', desc:'Tips + produk natural'},
+  {num:'10', name:'Cerita Emosional', desc:'Storytelling relatable'},
+];
+
+let selectedGaya = 'kasual';
 let selectedAngle = null;
+let outputFormat = 'teks';
 let currentPrompt = '';
 let currentResult = '';
+let currentIsHTML = false;
 
-// Render angles
-const grid = document.getElementById('angle-grid');
+// ── RENDER GAYA ────────────────────────────────────────
+const gayaGrid = document.getElementById('gaya-grid');
+gayas.forEach(g => {
+  const btn = document.createElement('button');
+  btn.className = 'gaya-btn' + (g.id === 'kasual' ? ' active' : '');
+  btn.id = 'g-' + g.id;
+  btn.title = g.desc;
+  btn.textContent = g.label;
+  btn.onclick = () => {
+    document.querySelectorAll('.gaya-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedGaya = g.id;
+  };
+  gayaGrid.appendChild(btn);
+});
+
+// ── RENDER ANGLES ──────────────────────────────────────
+const angleGrid = document.getElementById('angle-grid');
 angles.forEach((a, i) => {
   const btn = document.createElement('button');
   btn.className = 'angle-btn';
@@ -531,20 +302,25 @@ angles.forEach((a, i) => {
     btn.classList.add('active');
     selectedAngle = i;
   };
-  grid.appendChild(btn);
+  angleGrid.appendChild(btn);
 });
 
-// API Key management
+// ── FORMAT TOGGLE ──────────────────────────────────────
+function setFormat(f) {
+  outputFormat = f;
+  document.getElementById('fmt-teks').classList.toggle('active', f === 'teks');
+  document.getElementById('fmt-html').classList.toggle('active', f === 'html');
+}
+
+// ── API KEY ────────────────────────────────────────────
 function saveKey() {
   const key = document.getElementById('api-key-input').value.trim();
   if (!key.startsWith('sk-ant-')) {
-    document.getElementById('key-status').textContent = '⚠ Format key tidak valid. Harus diawali sk-ant-';
-    document.getElementById('key-status').className = 'status err';
+    setStatus('key-status', '⚠ Format key tidak valid', 'err');
     return;
   }
   localStorage.setItem('anthropic_key', key);
-  document.getElementById('key-status').textContent = '✓ API Key tersimpan!';
-  document.getElementById('key-status').className = 'status ok';
+  setStatus('key-status', '✓ API Key tersimpan!', 'ok');
   document.getElementById('api-banner').style.background = '#EDFAF4';
   document.getElementById('api-banner').style.borderColor = '#A8DFBF';
 }
@@ -553,179 +329,66 @@ window.addEventListener('load', () => {
   const saved = localStorage.getItem('anthropic_key');
   if (saved) {
     document.getElementById('api-key-input').value = saved;
-    document.getElementById('key-status').textContent = '✓ API Key aktif';
-    document.getElementById('key-status').className = 'status ok';
+    setStatus('key-status', '✓ API Key aktif', 'ok');
     document.getElementById('api-banner').style.background = '#EDFAF4';
     document.getElementById('api-banner').style.borderColor = '#A8DFBF';
   }
 });
 
-// Template builder
-const templates = [
-  (p,k,h,b,pl,pj) => `Kamu adalah copywriter affiliate Shopee untuk ibu rumah tangga Indonesia.
+// ── GAYA DESCRIPTIONS ─────────────────────────────────
+const gayaInstructions = {
+  kasual: `Gaya bahasa: KASUAL dan relatable seperti mengobrol dengan teman.
+- Gunakan kata ganti "aku" dan "kalian"
+- Boleh pakai singkatan umum (yuk, banget, sih, dong)
+- Hindari istilah teknis yang kaku
+- Terasa hangat, tidak formal`,
 
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
+  formal: `Gaya bahasa: FORMAL dan profesional.
+- Gunakan kata ganti "saya" dan "Anda"
+- Kalimat lengkap dan tertata
+- Hindari singkatan informal
+- Terasa terpercaya dan kredibel`,
 
-ANGLE: Masalah Sehari-hari
-Tulis konten yang:
-- Buka dengan 1 kalimat masalah nyata ibu RT (relatable, bukan lebay)
-- Tunjukkan produk ini solusi langsung ke masalah tersebut
-- Akhiri dengan CTA ke link Shopee
-- Gunakan bahasa santai, ibu-ibu banget, boleh pakai "aku" atau "bunda"
-- JANGAN sebut "affiliate" atau "kerjasama"
-- Sertakan 3–5 hashtag relevan di akhir`,
+  storytelling: `Gaya bahasa: STORYTELLING — narasi berbasis cerita.
+- Buka dengan momen/situasi nyata yang relatable
+- Bangun emosi perlahan sebelum masuk ke produk
+- Gunakan detail sensorik (apa yang dirasakan, dilihat)
+- Produk muncul sebagai bagian alami dari cerita`,
 
-  (p,k,h,b,pl,pj) => `Kamu adalah copywriter affiliate Shopee untuk ibu rumah tangga.
+  simple: `Gaya bahasa: SIMPLE dan to the point.
+- Kalimat pendek, maksimal 10 kata per kalimat
+- Tanpa basa-basi, langsung ke manfaat
+- Boleh pakai bullet point singkat
+- Energetik, padat, tidak bertele-tele`,
 
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
+  edukasi: `Gaya bahasa: EDUKATIF dan berimbang.
+- Posisikan sebagai "teman yang tahu banyak"
+- Sertakan fakta atau tips yang berguna
+- Sajikan kelebihan DAN kekurangan secara jujur
+- Pembaca merasa belajar sesuatu, bukan sekadar diajak beli`,
+};
 
-ANGLE: Hemat Budget
-Tulis konten yang:
-- Fokus pada harga yang masuk akal / value for money
-- Bandingkan dengan alternatif yang lebih mahal (tanpa sebut merek lain)
-- Gunakan angka konkret kalau bisa
-- Gaya bahasa ibu yang pintar atur keuangan rumah tangga
-- CTA Shopee di akhir + 3–5 hashtag`,
+// ── ANGLE TEMPLATES ───────────────────────────────────
+function getAngleInstruction(i) {
+  const map = [
+    `ANGLE: Masalah Sehari-hari\n- Buka dengan masalah nyata yang dialami ibu RT\n- Tunjukkan produk sebagai solusi langsung\n- Akhiri dengan CTA`,
+    `ANGLE: Hemat Budget\n- Fokus pada value for money\n- Bandingkan dengan alternatif mahal (tanpa sebut merek)\n- Gunakan angka konkret bila memungkinkan`,
+    `ANGLE: Review Jujur\n- Sebutkan 2 kelebihan + 1 kekurangan kecil\n- Kekurangan harus kecil tapi jujur agar terasa kredibel\n- Akhiri positif`,
+    `ANGLE: Before & After\n- Format SEBELUM: [kondisi sebelum pakai]\n- SESUDAH: [kondisi setelah pakai]\n- Perubahan harus logis dan believable`,
+    `ANGLE: Waktu = Emas\n- Fokus penghematan WAKTU bukan uang\n- Gambarkan rutinitas ibu yang padat\n- Gunakan angka waktu konkret bila bisa`,
+    `ANGLE: Rekomendasi Teman\n- Gaya "temen aku kasih tau..." atau "gara-gara postingan tetangga..."\n- Cerita singkat awalnya ragu → akhirnya beli\n- Terasa organik, bukan promosi`,
+    `ANGLE: Untuk Keluarga\n- Posisi produk "beli demi suami/anak"\n- Tonjolkan manfaat untuk orang-orang yang disayangi\n- Emosional tapi tidak manipulatif`,
+    `ANGLE: Flash Sale / Promo\n- Buka dengan sinyal urgensi\n- FOMO yang wajar, bukan maksa\n- Kalimat pendek dan padat`,
+    `ANGLE: Edukasi Mini\n- Buka dengan 1 fakta/tips berguna\n- Hubungkan ke produk secara natural\n- Terasa seperti konten helpful, bukan iklan`,
+    `ANGLE: Cerita Emosional\n- Momen kecil dan relatable dalam keseharian\n- Produk muncul sebagai bagian dari momen\n- Akhiri dengan kalimat hangat`,
+  ];
+  return map[i] || '';
+}
 
-  (p,k,h,b,pl,pj) => `Kamu adalah content creator affiliate Shopee, nulis untuk ibu rumah tangga.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Review Jujur
-Tulis konten yang:
-- Mulai dengan "udah coba sendiri" atau "beneran aku pake"
-- Sebutkan 2 kelebihan + 1 kekurangan kecil (agar terasa jujur)
-- Kekurangan harus kecil dan tidak menggugurkan manfaat produk
-- Akhiri positif + CTA Shopee
-- Hindari hiperbola, bahasa natural
-- 3–5 hashtag`,
-
-  (p,k,h,b,pl,pj) => `Kamu copywriter untuk konten affiliate Shopee, target ibu rumah tangga.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Before & After
-Tulis konten format:
-SEBELUM: [kondisi/rutinitas sebelum pakai — gambarkan repotnya]
-SESUDAH: [kondisi sesudah pakai — spesifik dan terasa nyata]
-- Transisi harus logis dan believable
-- Bukan transformasi dramatis, cukup perubahan kecil yang meaningful
-- CTA Shopee di akhir + hashtag`,
-
-  (p,k,h,b,pl,pj) => `Kamu nulis konten affiliate Shopee untuk ibu rumah tangga yang sibuk.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Waktu = Emas
-Tulis konten yang:
-- Fokus pada penghematan WAKTU (bukan uang)
-- Gambarkan rutinitas ibu yang padat: masak, ngurus anak, bersih-bersih
-- Tunjukkan produk ini potong waktu di satu pekerjaan
-- Gunakan angka waktu kalau memungkinkan (cth: "dari 30 menit jadi 10 menit")
-- CTA + hashtag`,
-
-  (p,k,h,b,pl,pj) => `Kamu content creator yang nulis rekomendasi produk Shopee gaya "dari mulut ke mulut".
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Rekomendasi Teman
-Tulis konten yang:
-- Buka dengan "temen aku kasih tau..." atau "gara-gara liat postingan tetangga..."
-- Cerita singkat kenapa awalnya ragu lalu akhirnya beli
-- Sekarang rekomendasiin ke orang lain
-- Gaya WOM, santai, bukan promosi
-- CTA Shopee natural + hashtag`,
-
-  (p,k,h,b,pl,pj) => `Kamu nulis konten affiliate Shopee angle keluarga untuk ibu rumah tangga.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Untuk Keluarga
-Tulis konten yang:
-- Posisi produk sebagai "beli demi suami/anak", bukan diri sendiri
-- Tonjolkan manfaat untuk orang-orang yang ibu sayangi
-- Cocok menggugah rasa care & tanggung jawab ibu
-- Emosional tapi tidak manipulatif
-- CTA Shopee + hashtag`,
-
-  (p,k,h,b,pl,pj) => `Kamu copywriter affiliate Shopee, buat konten promo untuk ibu rumah tangga.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Flash Sale / Promo
-Tulis konten yang:
-- Buka dengan sinyal urgensi: stok terbatas, harga spesial, periode promo
-- Tulis "[isi info promo aktual]" kalau info promo tidak tersedia
-- Gunakan kalimat pendek, padat, dorong action sekarang
-- FOMO yang wajar, bukan maksa
-- CTA kuat ke link Shopee + hashtag flash sale`,
-
-  (p,k,h,b,pl,pj) => `Kamu content creator edukatif yang juga affiliate Shopee untuk ibu rumah tangga.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Edukasi Mini
-Tulis konten format:
-- Buka dengan 1 fakta/tips berguna yang relevan dengan kategori produk
-- Hubungkan tips itu ke produk secara natural (bukan paksa)
-- Posisikan sebagai konten helpful, produk hanya solusi dari tips tersebut
-- Gaya informatif tapi tetap ramah ibu-ibu
-- CTA halus + hashtag edukasi`,
-
-  (p,k,h,b,pl,pj) => `Kamu storyteller affiliate Shopee, nulis untuk ibu rumah tangga Indonesia.
-
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
-
-ANGLE: Cerita Emosional
-Tulis konten yang:
-- Ceritakan momen kecil, relatable dalam keseharian ibu RT
-- Bukan melodrama — cukup momen yang "ngena" (kelelahan, terharu, syukur)
-- Produk muncul sebagai bagian dari momen itu, bukan bintang utama
-- Akhiri dengan kalimat hangat + CTA lembut ke Shopee
-- Hashtag yang relevan dengan mood konten`
-];
-
+// ── BUILD PROMPT ───────────────────────────────────────
 function buildPrompt() {
+  if (selectedAngle === null) { alert('Pilih angle dulu ya!'); return; }
+
   const p = document.getElementById('produk').value.trim() || '[nama produk]';
   const k = document.getElementById('kategori').value;
   const h = document.getElementById('harga').value.trim() || '[harga]';
@@ -733,64 +396,65 @@ function buildPrompt() {
   const pl = document.getElementById('platform').value;
   const pj = document.getElementById('panjang').value;
 
-  if (selectedAngle === null) {
-    alert('Pilih salah satu angle dulu ya!');
-    return;
-  }
+  const formatNote = `\nFORMAT OUTPUT: Teks biasa. Tulis langsung kontennya, tanpa HTML.`;
 
-  currentPrompt = templates[selectedAngle](p, k, h, b, pl, pj);
+  const objectivityNote = `
+PRINSIP KONTEN TIDAK BIAS:
+- Sertakan minimal 1 kekurangan kecil atau catatan penggunaan agar terasa jujur
+- Gunakan kalimat berimbang, hindari hiperbola ("terbaik di dunia", "wajib beli")
+- Tambahkan "Cocok untuk: ..." dan "Kurang cocok jika: ..." agar pembaca bisa memutuskan sendiri
+- Posisikan diri sebagai teman yang berbagi pengalaman, bukan penjual`;
+
+  const prompt = `Kamu adalah content creator affiliate Shopee untuk ibu rumah tangga Indonesia.
+
+Produk: ${p} (${k})
+Harga: Rp${h}
+Benefit: ${b}
+Platform: ${pl}
+Panjang: ${pj}
+
+${gayaInstructions[selectedGaya]}
+
+${getAngleInstruction(selectedAngle)}
+${objectivityNote}
+${formatNote}`;
+
+  currentPrompt = prompt;
   const box = document.getElementById('prompt-box');
-  box.textContent = currentPrompt;
+  box.textContent = prompt;
   box.classList.remove('empty');
   document.getElementById('btn-ai').disabled = false;
 }
 
-function copyPrompt() {
-  if (!currentPrompt) { alert('Build prompt dulu!'); return; }
-  navigator.clipboard.writeText(currentPrompt);
-  showCopied('📋 Copy Prompt', '✓ Tersalin!', 0);
+// ── TABS ───────────────────────────────────────────────
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', (i===0&&tab==='preview')||(i===1&&tab==='code')));
+  document.getElementById('result-preview').style.display = tab === 'preview' ? 'block' : 'none';
+  document.getElementById('result-code').style.display = tab === 'code' ? 'block' : 'none';
 }
 
-function copyResult() {
-  if (!currentResult) { alert('Belum ada hasil konten!'); return; }
-  navigator.clipboard.writeText(currentResult);
-  showCopied('📋 Copy Hasil Konten', '✓ Tersalin!', 1);
-}
-
-function showCopied(original, msg, idx) {
-  const btns = document.querySelectorAll('.btn-copy-result, .btn-copy');
-  // just flash the status
-  const status = document.getElementById('gen-status');
-  status.textContent = '✓ Berhasil disalin ke clipboard!';
-  status.className = 'status ok';
-  setTimeout(() => { status.textContent = ''; status.className = 'status'; }, 2000);
-}
-
+// ── GENERATE ───────────────────────────────────────────
 async function generateContent() {
   const apiKey = localStorage.getItem('anthropic_key');
-  if (!apiKey) {
-    alert('Masukkan API Key Anthropic dulu di atas!');
-    return;
-  }
-  if (!currentPrompt) {
-    alert('Build prompt dulu sebelum generate!');
-    return;
-  }
+  if (!apiKey) { alert('Masukkan API Key dulu!'); return; }
+  if (!currentPrompt) { alert('Build prompt dulu!'); return; }
 
   const resultBox = document.getElementById('result-box');
-  const statusEl = document.getElementById('gen-status');
+  const codeBox = document.getElementById('code-box');
   const btn = document.getElementById('btn-ai');
+  const tabs = document.getElementById('result-tabs');
 
-  resultBox.textContent = '';
-  resultBox.classList.remove('empty');
-  resultBox.classList.add('loading');
-  resultBox.innerHTML = 'Sedang generate konten<span class="streaming-cursor"></span>';
+  resultBox.className = 'result-area';
+  resultBox.innerHTML = 'Sedang generate<span class="streaming-cursor"></span>';
+  document.getElementById('result-preview').style.display = 'block';
+  document.getElementById('result-code').style.display = 'none';
+  tabs.style.display = 'none';
   btn.disabled = true;
-  statusEl.textContent = '';
   currentResult = '';
+  currentIsHTML = false;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -800,23 +464,22 @@ async function generateContent() {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        max_tokens: 1500,
         stream: true,
         messages: [{ role: 'user', content: currentPrompt }]
       })
     });
 
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error?.message || 'API error ' + response.status);
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || 'API error ' + res.status);
     }
 
-    const reader = response.body.getReader();
+    const reader = res.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
     let fullText = '';
 
-    resultBox.classList.remove('loading');
     resultBox.innerHTML = '';
 
     while (true) {
@@ -833,7 +496,11 @@ async function generateContent() {
             const parsed = JSON.parse(data);
             if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
               fullText += parsed.delta.text;
-              resultBox.textContent = fullText;
+              if (currentIsHTML) {
+                resultBox.innerHTML = fullText;
+              } else {
+                resultBox.textContent = fullText;
+              }
             }
           } catch {}
         }
@@ -841,18 +508,45 @@ async function generateContent() {
     }
 
     currentResult = fullText;
-    statusEl.textContent = '✓ Konten berhasil digenerate!';
-    statusEl.className = 'status ok';
+
+    if (currentIsHTML) {
+      resultBox.innerHTML = fullText;
+      resultBox.className = 'result-html';
+      codeBox.textContent = fullText;
+      tabs.style.display = 'flex';
+    } else {
+      resultBox.textContent = fullText;
+      resultBox.className = 'result-area';
+    }
+
+    setStatus('gen-status', '✓ Konten berhasil digenerate!', 'ok');
 
   } catch (err) {
-    resultBox.textContent = '';
-    resultBox.classList.add('empty');
     resultBox.textContent = 'Error: ' + err.message;
-    statusEl.textContent = '⚠ Gagal generate. Cek API key kamu.';
-    statusEl.className = 'status err';
+    setStatus('gen-status', '⚠ Gagal. Cek API key.', 'err');
   } finally {
     btn.disabled = false;
   }
+}
+
+// ── COPY ───────────────────────────────────────────────
+function copyPrompt() {
+  if (!currentPrompt) { alert('Build prompt dulu!'); return; }
+  navigator.clipboard.writeText(currentPrompt);
+  setStatus('gen-status', '✓ Prompt disalin!', 'ok');
+}
+
+function copyResult() {
+  if (!currentResult) { alert('Belum ada hasil!'); return; }
+  navigator.clipboard.writeText(currentResult);
+  setStatus('gen-status', '✓ Hasil konten disalin!', 'ok');
+}
+
+function setStatus(id, msg, cls) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'status ' + cls;
+  setTimeout(() => { el.textContent = ''; el.className = 'status'; }, 3000);
 }
 </script>
 </body>
