@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shopee Affiliate Generator v2</title>
+<title>Shopee Affiliate Generator v3</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
 <style>
 :root {
@@ -24,7 +24,7 @@ header span{margin-left:auto;font-size:12px;color:rgba(255,255,255,.7)}
 .full{grid-column:1/-1}
 
 .hero{text-align:center;padding:1rem 0 .5rem}
-.hero h2{font-family:'Fraunces',serif;font-size:28px;font-weight:300;font-style:italic;color:var(--text);margin-bottom:6px}
+.hero h2{font-family:'Fraunces',serif;font-size:26px;font-weight:300;font-style:italic;color:var(--text);margin-bottom:6px}
 .hero p{font-size:14px;color:var(--text2)}
 .badge{display:inline-block;background:var(--accent-light);color:var(--accent);border:1px solid #FFCDB8;border-radius:20px;font-size:11px;font-weight:700;padding:3px 10px;letter-spacing:.04em;margin-bottom:10px}
 
@@ -44,16 +44,15 @@ label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bot
 input[type=text],select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);background:var(--surface);outline:none;margin-bottom:12px;transition:border-color .15s}
 input[type=text]:focus,select:focus{border-color:var(--accent)}
 input::placeholder{color:var(--text3)}
-
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-/* GAYA BAHASA PILLS */
 .gaya-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.gaya-btn{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:inherit}
+.gaya-btn{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:inherit;line-height:1.3;text-align:center}
 .gaya-btn:hover{border-color:var(--accent2);color:var(--accent)}
 .gaya-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+.gaya-btn .glabel{display:block;font-size:12px;font-weight:700}
+.gaya-btn .gdesc{display:block;font-size:10px;opacity:.7;margin-top:1px}
 
-/* ANGLE */
 .angle-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
 .angle-btn{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
 .angle-btn:hover{border-color:var(--accent2);background:var(--accent-light)}
@@ -63,55 +62,29 @@ input::placeholder{color:var(--text3)}
 .angle-btn .desc{font-size:10px;color:var(--text3);display:block;margin-top:3px;line-height:1.4}
 .angle-btn.active .num,.angle-btn.active .name{color:var(--accent)}
 
-/* FORMAT TOGGLE */
-.format-toggle{display:flex;gap:6px;margin-bottom:14px}
-.fmt-btn{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;text-align:center;transition:all .15s;font-family:inherit}
-.fmt-btn:hover{border-color:var(--accent2)}
-.fmt-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
-
-/* BUTTONS */
 .btn-gen{width:100%;background:var(--accent);color:white;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;margin-top:4px}
 .btn-gen:hover:not(:disabled){background:#C93608;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,68,10,.3)}
 .btn-gen:disabled{background:var(--text3);cursor:not-allowed}
 
-.btn-secondary{width:100%;background:var(--surface);color:var(--text2);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
-.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-
-.btn-green{width:100%;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-green:hover:not(:disabled){background:#D5F4E6}
-.btn-green:disabled{opacity:.5;cursor:not-allowed}
-
-.btn-row{display:flex;gap:8px;margin-top:10px}
-
-/* OUTPUT */
 .right-panel{display:flex;flex-direction:column;gap:1rem}
 .prompt-area{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:140px;font-size:13px;color:var(--text2);line-height:1.7;white-space:pre-wrap;font-family:inherit}
 .prompt-area.empty{color:var(--text3);font-style:italic}
-
-.result-area{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:220px;font-size:13px;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:inherit;overflow-x:auto}
+.result-area{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:220px;font-size:13px;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:inherit}
 .result-area.empty{color:var(--text3);font-style:italic}
 
-.result-html{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:220px;font-size:13px;line-height:1.7}
-.result-html h3{font-size:15px;font-weight:700;margin:12px 0 6px;color:var(--text)}
-.result-html p{margin-bottom:8px;color:var(--text2)}
-.result-html ul{padding-left:18px;margin-bottom:8px}
-.result-html li{margin-bottom:4px;color:var(--text2)}
-.result-html .cta-btn{display:inline-block;background:var(--accent);color:white;padding:10px 20px;border-radius:8px;font-weight:700;text-decoration:none;margin-top:8px;font-size:13px}
+.btn-secondary{width:100%;background:var(--surface);color:var(--text2);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.btn-green{width:100%;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-green:hover:not(:disabled){background:#D5F4E6}
+.btn-green:disabled{opacity:.5;cursor:not-allowed}
+.btn-row{display:flex;gap:8px;margin-top:10px}
 
 .streaming-cursor{display:inline-block;width:2px;height:14px;background:var(--accent);animation:blink .7s infinite;vertical-align:text-bottom;margin-left:1px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
 .status{font-size:12px;color:var(--text3);text-align:center;padding:4px 0}
 .status.ok{color:var(--green);font-weight:600}
 .status.err{color:var(--accent);font-weight:600}
-
 hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
-
-.tabs{display:flex;gap:4px;margin-bottom:10px}
-.tab{flex:1;padding:7px;font-size:12px;font-weight:600;border:1px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text2);cursor:pointer;text-align:center;font-family:inherit;transition:all .15s}
-.tab.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
-
-.code-area{background:#1A0F0A;border-radius:10px;padding:14px;font-family:monospace;font-size:11px;color:#FFD4B8;line-height:1.6;white-space:pre-wrap;overflow-x:auto;max-height:400px;overflow-y:auto;min-height:120px}
 
 @media(max-width:640px){.container{grid-template-columns:1fr}.grid2{grid-template-columns:1fr 1fr}}
 </style>
@@ -120,25 +93,24 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
 
 <header>
   <div class="logo">🛍️</div>
-  <h1>Shopee Affiliate Generator v2</h1>
-  <span>Powered by ggilang_ganteng</span>
+  <h1>Shopee Affiliate Generator v3</h1>
+  <span>Powered by Claude AI</span>
 </header>
 
 <div class="container">
 
   <div class="hero full">
-    <div class="badge">10 Angle · 5 Gaya Bahasa · Format Teks & HTML</div>
-    <h2>Konten affiliate yang jujur & konvert</h2>
-    <p>Isi detail produk → pilih angle & gaya bahasa → generate langsung dengan AI</p>
+    <div class="badge">Persona: Ibu · Bocil 2 Tahun · 10 Angle · 5 Gaya</div>
+    <h2>Konten affiliate yang kerasa nulis sendiri</h2>
+    <p>Isi detail produk → pilih gaya & angle → generate langsung dengan AI</p>
   </div>
 
-  <!-- API KEY -->
   <div class="api-banner full" id="api-banner">
     <div class="top">
       <div class="icon">🔑</div>
       <div style="flex:1">
         <div style="font-weight:600;margin-bottom:4px">Masukkan Anthropic API Key</div>
-        <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Daftar gratis di <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent)">console.anthropic.com</a> — key disimpan di browser kamu saja.</div>
+        <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Daftar gratis di <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent)">console.anthropic.com</a> — tersimpan di browser kamu saja.</div>
         <div class="api-key-row">
           <input type="password" id="api-key-input" placeholder="sk-ant-api03-..." />
           <button class="btn-save" onclick="saveKey()">Simpan</button>
@@ -148,12 +120,12 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
     </div>
   </div>
 
-  <!-- LEFT FORM -->
+  <!-- FORM -->
   <div class="card">
     <div class="card-title">Detail Produk</div>
 
     <label>Nama Produk</label>
-    <input type="text" id="produk" placeholder="cth: Pembersih Telinga LED Earwax" />
+    <input type="text" id="produk" placeholder="cth: Blender portable mini USB" />
 
     <div class="grid2">
       <div>
@@ -167,6 +139,8 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
           <option>Makanan &amp; Minuman</option>
           <option>Peralatan Rumah</option>
           <option>Kesehatan</option>
+          <option>Elektronik</option>
+          <option>Buku</option>
           <option>Lainnya</option>
         </select>
       </div>
@@ -177,7 +151,7 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
     </div>
 
     <label>Benefit Utama</label>
-    <input type="text" id="benefit" placeholder="cth: aman untuk anak, hemat listrik" />
+    <input type="text" id="benefit" placeholder="cth: aman untuk anak, anti tumpah" />
 
     <div class="grid2">
       <div>
@@ -187,8 +161,8 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
           <option>Instagram caption</option>
           <option>Facebook post</option>
           <option>WhatsApp status</option>
-          <option>Blog/artikel</option>
           <option>Threads</option>
+          <option>Blog/artikel</option>
         </select>
       </div>
       <div>
@@ -202,7 +176,7 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
     </div>
 
     <hr class="divider" />
-    <div class="card-title">Gaya Bahasa</div>
+    <div class="card-title">Gaya Penulisan</div>
     <div class="gaya-grid" id="gaya-grid"></div>
 
     <hr class="divider" />
@@ -212,7 +186,7 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
     <button class="btn-gen" onclick="buildPrompt()">⚡ Build Prompt</button>
   </div>
 
-  <!-- RIGHT OUTPUT -->
+  <!-- OUTPUT -->
   <div class="right-panel">
     <div class="card">
       <div class="card-title">Prompt Siap Pakai</div>
@@ -225,17 +199,8 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
 
     <div class="card">
       <div class="card-title">Hasil Konten AI</div>
-      <div class="tabs" id="result-tabs" style="display:none">
-        <button class="tab active" onclick="showTab('preview')">👁 Preview</button>
-        <button class="tab" onclick="showTab('code')">💻 Source Code</button>
-      </div>
-      <div id="result-preview">
-        <div class="result-area empty" id="result-box">Klik "Generate dengan AI" untuk membuat konten...</div>
-      </div>
-      <div id="result-code" style="display:none">
-        <div class="code-area" id="code-box"></div>
-      </div>
-      <div class="btn-row" style="margin-top:10px">
+      <div class="result-area empty" id="result-box">Klik "Generate dengan AI" untuk membuat konten...</div>
+      <div class="btn-row">
         <button class="btn-secondary" onclick="copyResult()">📋 Copy Hasil</button>
       </div>
       <div id="gen-status" class="status"></div>
@@ -247,32 +212,107 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:10px 0}
 <script>
 // ── DATA ──────────────────────────────────────────────
 const gayas = [
-  {id:'kasual', label:'😊 Kasual', desc:'Santai, aku/kamu'},
-  {id:'formal', label:'📋 Formal', desc:'Profesional, sopan'},
-  {id:'storytelling', label:'📖 Storytelling', desc:'Narasi, menyentuh'},
-  {id:'simple', label:'⚡ Simple', desc:'Singkat, to the point'},
-  {id:'edukasi', label:'🎓 Edukatif', desc:'Informatif, berimbang'},
+  {
+    id: 'kasual',
+    label: '😊 Kasual',
+    desc: 'Santai, spontan',
+    instruction: `PERSONA & GAYA PENULISAN: Kasual — nulis kayak lagi chat di grup WA sambil satu tangan gendong bocil.
+Aturan ketat:
+- Kata ganti: "aku", "kalian", sebut anaknya "si bocil", "dedek", atau "dia"
+- Boleh pakai: "btw", "literally", "wkwk", "nggak", "banget", "sih", "dong", "loh", "kan"
+- Kalimat tidak harus sempurna, boleh ada feel spontan
+- Hindari kata baku yang kaku: jangan "sangat", "merupakan", "tersebut", "sehingga"
+- Gunakan: "beneran", "emang", "udah", "kayak gitu", "soalnya"
+- Konteks bocil 2 tahun boleh muncul natural: GTM, tantrum, berantakin rumah, susah tidur`
+  },
+  {
+    id: 'storytelling',
+    label: '📖 Cerita',
+    desc: 'Narasi, ngalir',
+    instruction: `PERSONA & GAYA PENULISAN: Storytelling — nulis kayak lagi cerita di Threads atau caption panjang Instagram.
+Aturan ketat:
+- Buka dari momen chaos bocil 2 tahun dulu, baru nyambung ke produk secara natural
+- Bangun situasi dulu: gambarin repotnya, lelahnya, atau lucunya jaga bocil aktif
+- Produk muncul bukan sebagai iklan tapi sebagai "penyelamat tak terduga"
+- Pakai kalimat pendek bergantian dengan kalimat panjang — biar ada ritme baca
+- Boleh ada kalimat yang berdiri sendiri untuk efek dramatik
+- Hindari transisi yang maksa. Cerita harus ngalir.
+- Kata baku dikurangi: pakai "nggak", "udah", "gimana", "kayak", "soalnya"`
+  },
+  {
+    id: 'simple',
+    label: '⚡ Simple',
+    desc: 'Pendek, nendang',
+    instruction: `PERSONA & GAYA PENULISAN: Simple — nulis kayak story WA atau Threads 3-4 kalimat.
+Aturan ketat:
+- Maksimal 3–4 kalimat per paragraf, satu paragraf satu ide
+- Langsung ke poin, zero basa-basi
+- Kalimat pertama harus langsung menarik — boleh pakai pertanyaan atau pernyataan bold
+- Boleh pakai line break pendek untuk efek
+- Hindari penjelasan panjang, percaya pembaca paham
+- Kata yang dibuang: "merupakan", "sangat", "tersebut", "dalam rangka", "sehingga"
+- Pakai: "ini dia", "serius deh", "coba deh", "worth it banget"`
+  },
+  {
+    id: 'formal',
+    label: '📋 Formal',
+    desc: 'Rapi, terpercaya',
+    instruction: `PERSONA & GAYA PENULISAN: Formal tapi tetap manusiawi — bukan kaku seperti surat resmi, tapi seperti blog parenting yang ditulis ibu thoughtful.
+Aturan ketat:
+- Kata ganti "saya" dan "Anda" — tapi boleh sesekali "kita" untuk membangun kebersamaan
+- Kalimat lengkap dan tertata, tapi tidak robotik
+- Boleh ada selipan pengalaman personal yang membuat terasa nyata
+- Hindari hiperbola dan klaim berlebihan
+- Tetap sertakan konteks ibu dengan bocil 2 tahun — tapi disampaikan dengan rapi
+- Kata yang dihindari: "wkwk", singkatan informal, typo feel
+- Gunakan transisi yang smooth: "Setelah mencoba...", "Yang menarik adalah...", "Perlu diakui..."`
+  },
+  {
+    id: 'edukasi',
+    label: '🎓 Edukatif',
+    desc: 'Jujur, riset dulu',
+    instruction: `PERSONA & GAYA PENULISAN: Edukatif — gaya ibu yang "aku research dulu sebelum beli" dan mau sharing jujur.
+Aturan ketat:
+- Posisikan sebagai teman yang udah coba dan mau kasih info lengkap, bukan jualan
+- Struktur: konteks masalah → pertimbangan sebelum beli → hasil pakai → rekomendasi jujur
+- Wajib ada kekurangan kecil atau catatan pemakaian — ini yang bikin dipercaya
+- Boleh pakai format "yang aku suka: ..." dan "yang perlu diperhatikan: ..."
+- Sertakan "cocok buat: ..." dan "kurang cocok kalau: ..." di bagian akhir
+- Gaya bahasa campuran: setengah kasual, setengah informatif
+- Hindari: klaim tanpa dasar, kata "terbaik di dunia", atau terlalu hype`
+  }
 ];
 
 const angles = [
-  {num:'01', name:'Masalah Sehari-hari', desc:'Pain point → solusi'},
-  {num:'02', name:'Hemat Budget', desc:'Value for money'},
+  {num:'01', name:'Masalah Sehari-hari', desc:'Pain point nyata → solusi'},
+  {num:'02', name:'Hemat Budget', desc:'Value for money, irit'},
   {num:'03', name:'Review Jujur', desc:'Pro + kontra kecil'},
   {num:'04', name:'Before & After', desc:'Sebelum vs sesudah'},
   {num:'05', name:'Waktu = Emas', desc:'Hemat waktu ibu sibuk'},
   {num:'06', name:'Rekomendasi Teman', desc:'Gaya WOM organik'},
-  {num:'07', name:'Untuk Keluarga', desc:'Manfaat suami/anak'},
+  {num:'07', name:'Untuk Keluarga', desc:'Manfaat suami/bocil'},
   {num:'08', name:'Flash Sale / Promo', desc:'Urgensi & FOMO wajar'},
   {num:'09', name:'Edukasi Mini', desc:'Tips + produk natural'},
-  {num:'10', name:'Cerita Emosional', desc:'Storytelling relatable'},
+  {num:'10', name:'Cerita Emosional', desc:'Momen relatable, ngena'},
+];
+
+const angleInstructions = [
+  `ANGLE: Masalah Sehari-hari\n- Buka dengan masalah nyata yang dialami ibu dengan bocil 2 tahun\n- Tunjukkan produk sebagai solusi langsung, bukan dipaksakan\n- Akhiri dengan CTA ke Shopee`,
+  `ANGLE: Hemat Budget\n- Fokus pada value for money\n- Bandingkan dengan alternatif mahal tanpa sebut merek lain\n- Gunakan angka konkret kalau bisa (misal: "hemat 50rb dibanding beli di mall")`,
+  `ANGLE: Review Jujur\n- Sebutkan 2 kelebihan + 1 kekurangan kecil yang jujur\n- Kekurangan harus terasa nyata tapi tidak menggugurkan nilai produk\n- Ini yang bikin konten dipercaya`,
+  `ANGLE: Before & After\n- Format: kondisi sebelum pakai → kondisi sesudah\n- Perubahan harus logis dan believable, bukan dramatis lebay\n- Konteks bocil 2 tahun boleh masuk di bagian "sebelum"`,
+  `ANGLE: Waktu = Emas\n- Fokus pada penghematan WAKTU, bukan uang\n- Gambarkan rutinitas ibu yang padat sambil jaga bocil aktif\n- Gunakan angka waktu konkret kalau memungkinkan`,
+  `ANGLE: Rekomendasi Teman\n- Buka dengan "temen aku kasih tau..." atau "gara-gara liat postingan orang..."\n- Cerita singkat awalnya ragu → akhirnya nyoba → hasilnya\n- Terasa organik, bukan promosi`,
+  `ANGLE: Untuk Keluarga\n- Posisi produk "beli demi bocil atau suami", bukan diri sendiri\n- Tonjolkan manfaat untuk orang-orang yang disayangi\n- Emosional tapi tidak manipulatif`,
+  `ANGLE: Flash Sale / Promo\n- Buka dengan sinyal urgensi yang wajar\n- Kalimat pendek dan padat, dorong action sekarang\n- FOMO yang reasonable, bukan maksa`,
+  `ANGLE: Edukasi Mini\n- Buka dengan 1 fakta atau tips berguna yang relevan\n- Sambungkan ke produk secara natural, tidak tiba-tiba\n- Terasa seperti konten helpful, bukan iklan`,
+  `ANGLE: Cerita Emosional\n- Momen kecil relatable dalam keseharian ibu dengan bocil 2 tahun\n- Produk muncul sebagai bagian dari momen, bukan bintang utama\n- Akhiri dengan kalimat hangat + CTA lembut`
 ];
 
 let selectedGaya = 'kasual';
 let selectedAngle = null;
-let outputFormat = 'teks';
 let currentPrompt = '';
 let currentResult = '';
-let currentIsHTML = false;
 
 // ── RENDER GAYA ────────────────────────────────────────
 const gayaGrid = document.getElementById('gaya-grid');
@@ -280,8 +320,7 @@ gayas.forEach(g => {
   const btn = document.createElement('button');
   btn.className = 'gaya-btn' + (g.id === 'kasual' ? ' active' : '');
   btn.id = 'g-' + g.id;
-  btn.title = g.desc;
-  btn.textContent = g.label;
+  btn.innerHTML = `<span class="glabel">${g.label}</span><span class="gdesc">${g.desc}</span>`;
   btn.onclick = () => {
     document.querySelectorAll('.gaya-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -295,7 +334,6 @@ const angleGrid = document.getElementById('angle-grid');
 angles.forEach((a, i) => {
   const btn = document.createElement('button');
   btn.className = 'angle-btn';
-  btn.id = 'a-' + i;
   btn.innerHTML = `<span class="num">${a.num}</span><span class="name">${a.name}</span><span class="desc">${a.desc}</span>`;
   btn.onclick = () => {
     document.querySelectorAll('.angle-btn').forEach(b => b.classList.remove('active'));
@@ -305,19 +343,11 @@ angles.forEach((a, i) => {
   angleGrid.appendChild(btn);
 });
 
-// ── FORMAT TOGGLE ──────────────────────────────────────
-function setFormat(f) {
-  outputFormat = f;
-  document.getElementById('fmt-teks').classList.toggle('active', f === 'teks');
-  document.getElementById('fmt-html').classList.toggle('active', f === 'html');
-}
-
 // ── API KEY ────────────────────────────────────────────
 function saveKey() {
   const key = document.getElementById('api-key-input').value.trim();
   if (!key.startsWith('sk-ant-')) {
-    setStatus('key-status', '⚠ Format key tidak valid', 'err');
-    return;
+    setStatus('key-status', '⚠ Format key tidak valid', 'err'); return;
   }
   localStorage.setItem('anthropic_key', key);
   setStatus('key-status', '✓ API Key tersimpan!', 'ok');
@@ -335,102 +365,47 @@ window.addEventListener('load', () => {
   }
 });
 
-// ── GAYA DESCRIPTIONS ─────────────────────────────────
-const gayaInstructions = {
-  kasual: `Gaya bahasa: KASUAL dan relatable seperti mengobrol dengan teman.
-- Gunakan kata ganti "aku" dan "kalian"
-- Boleh pakai singkatan umum (yuk, banget, sih, dong)
-- Hindari istilah teknis yang kaku
-- Terasa hangat, tidak formal`,
-
-  formal: `Gaya bahasa: FORMAL dan profesional.
-- Gunakan kata ganti "saya" dan "Anda"
-- Kalimat lengkap dan tertata
-- Hindari singkatan informal
-- Terasa terpercaya dan kredibel`,
-
-  storytelling: `Gaya bahasa: STORYTELLING — narasi berbasis cerita.
-- Buka dengan momen/situasi nyata yang relatable
-- Bangun emosi perlahan sebelum masuk ke produk
-- Gunakan detail sensorik (apa yang dirasakan, dilihat)
-- Produk muncul sebagai bagian alami dari cerita`,
-
-  simple: `Gaya bahasa: SIMPLE dan to the point.
-- Kalimat pendek, maksimal 10 kata per kalimat
-- Tanpa basa-basi, langsung ke manfaat
-- Boleh pakai bullet point singkat
-- Energetik, padat, tidak bertele-tele`,
-
-  edukasi: `Gaya bahasa: EDUKATIF dan berimbang.
-- Posisikan sebagai "teman yang tahu banyak"
-- Sertakan fakta atau tips yang berguna
-- Sajikan kelebihan DAN kekurangan secara jujur
-- Pembaca merasa belajar sesuatu, bukan sekadar diajak beli`,
-};
-
-// ── ANGLE TEMPLATES ───────────────────────────────────
-function getAngleInstruction(i) {
-  const map = [
-    `ANGLE: Masalah Sehari-hari\n- Buka dengan masalah nyata yang dialami ibu RT\n- Tunjukkan produk sebagai solusi langsung\n- Akhiri dengan CTA`,
-    `ANGLE: Hemat Budget\n- Fokus pada value for money\n- Bandingkan dengan alternatif mahal (tanpa sebut merek)\n- Gunakan angka konkret bila memungkinkan`,
-    `ANGLE: Review Jujur\n- Sebutkan 2 kelebihan + 1 kekurangan kecil\n- Kekurangan harus kecil tapi jujur agar terasa kredibel\n- Akhiri positif`,
-    `ANGLE: Before & After\n- Format SEBELUM: [kondisi sebelum pakai]\n- SESUDAH: [kondisi setelah pakai]\n- Perubahan harus logis dan believable`,
-    `ANGLE: Waktu = Emas\n- Fokus penghematan WAKTU bukan uang\n- Gambarkan rutinitas ibu yang padat\n- Gunakan angka waktu konkret bila bisa`,
-    `ANGLE: Rekomendasi Teman\n- Gaya "temen aku kasih tau..." atau "gara-gara postingan tetangga..."\n- Cerita singkat awalnya ragu → akhirnya beli\n- Terasa organik, bukan promosi`,
-    `ANGLE: Untuk Keluarga\n- Posisi produk "beli demi suami/anak"\n- Tonjolkan manfaat untuk orang-orang yang disayangi\n- Emosional tapi tidak manipulatif`,
-    `ANGLE: Flash Sale / Promo\n- Buka dengan sinyal urgensi\n- FOMO yang wajar, bukan maksa\n- Kalimat pendek dan padat`,
-    `ANGLE: Edukasi Mini\n- Buka dengan 1 fakta/tips berguna\n- Hubungkan ke produk secara natural\n- Terasa seperti konten helpful, bukan iklan`,
-    `ANGLE: Cerita Emosional\n- Momen kecil dan relatable dalam keseharian\n- Produk muncul sebagai bagian dari momen\n- Akhiri dengan kalimat hangat`,
-  ];
-  return map[i] || '';
-}
-
 // ── BUILD PROMPT ───────────────────────────────────────
 function buildPrompt() {
   if (selectedAngle === null) { alert('Pilih angle dulu ya!'); return; }
 
-  const p = document.getElementById('produk').value.trim() || '[nama produk]';
-  const k = document.getElementById('kategori').value;
-  const h = document.getElementById('harga').value.trim() || '[harga]';
-  const b = document.getElementById('benefit').value.trim() || '[benefit]';
+  const p  = document.getElementById('produk').value.trim()   || '[nama produk]';
+  const k  = document.getElementById('kategori').value;
+  const h  = document.getElementById('harga').value.trim()    || '[harga]';
+  const b  = document.getElementById('benefit').value.trim()  || '[benefit]';
   const pl = document.getElementById('platform').value;
   const pj = document.getElementById('panjang').value;
 
-  const formatNote = `\nFORMAT OUTPUT: Teks biasa. Tulis langsung kontennya, tanpa HTML.`;
+  const gayaObj = gayas.find(g => g.id === selectedGaya);
 
-  const objectivityNote = `
-PRINSIP KONTEN TIDAK BIAS:
-- Sertakan minimal 1 kekurangan kecil atau catatan penggunaan agar terasa jujur
-- Gunakan kalimat berimbang, hindari hiperbola ("terbaik di dunia", "wajib beli")
-- Tambahkan "Cocok untuk: ..." dan "Kurang cocok jika: ..." agar pembaca bisa memutuskan sendiri
-- Posisikan diri sebagai teman yang berbagi pengalaman, bukan penjual`;
+  const prompt =
+`Kamu adalah ibu muda Indonesia, anak 1 laki-laki usia 2 tahun (bocil aktif, fase eksplorasi, kadang tantrum). Kamu Meulis konten affiliate Shopee bukan karena disuruh brand, tapi karena beneran pake dan mau sharing ke sesama ibu berdasarkan pengalaman.
 
-  const prompt = `Kamu adalah content creator affiliate Shopee untuk ibu rumah tangga Indonesia.
+PRODUK: ${p}
+KATEGORI: ${k}
+HARGA: Rp${h}
+BENEFIT UTAMA: ${b}
+PLATFORM: ${pl}
+PANJANG: ${pj}
 
-Produk: ${p} (${k})
-Harga: Rp${h}
-Benefit: ${b}
-Platform: ${pl}
-Panjang: ${pj}
+${gayaObj.instruction}
 
-${gayaInstructions[selectedGaya]}
+${angleInstructions[selectedAngle]}
 
-${getAngleInstruction(selectedAngle)}
-${objectivityNote}
-${formatNote}`;
+PRINSIP TIDAK BIAS (wajib):
+- Sertakan minimal 1 kekurangan kecil atau catatan pemakaian
+- Hindari hiperbola: jangan "terbaik", "wajib beli", "produk ajaib"
+- Kalimat berimbang — pembaca bisa memutuskan sendiri
+- Akhiri dengan CTA ke Shopee yang natural, tidak memaksa
+- Sertakan 3–5 hashtag relevan di paling akhir
+
+Tulis langsung kontennya. Jangan tambahkan penjelasan atau kata pengantar.`;
 
   currentPrompt = prompt;
   const box = document.getElementById('prompt-box');
   box.textContent = prompt;
   box.classList.remove('empty');
   document.getElementById('btn-ai').disabled = false;
-}
-
-// ── TABS ───────────────────────────────────────────────
-function showTab(tab) {
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', (i===0&&tab==='preview')||(i===1&&tab==='code')));
-  document.getElementById('result-preview').style.display = tab === 'preview' ? 'block' : 'none';
-  document.getElementById('result-code').style.display = tab === 'code' ? 'block' : 'none';
 }
 
 // ── GENERATE ───────────────────────────────────────────
@@ -440,18 +415,12 @@ async function generateContent() {
   if (!currentPrompt) { alert('Build prompt dulu!'); return; }
 
   const resultBox = document.getElementById('result-box');
-  const codeBox = document.getElementById('code-box');
   const btn = document.getElementById('btn-ai');
-  const tabs = document.getElementById('result-tabs');
 
   resultBox.className = 'result-area';
-  resultBox.innerHTML = 'Sedang generate<span class="streaming-cursor"></span>';
-  document.getElementById('result-preview').style.display = 'block';
-  document.getElementById('result-code').style.display = 'none';
-  tabs.style.display = 'none';
+  resultBox.innerHTML = 'Sedang nulis konten<span class="streaming-cursor"></span>';
   btn.disabled = true;
   currentResult = '';
-  currentIsHTML = false;
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -479,7 +448,6 @@ async function generateContent() {
     const decoder = new TextDecoder();
     let buffer = '';
     let fullText = '';
-
     resultBox.innerHTML = '';
 
     while (true) {
@@ -496,11 +464,7 @@ async function generateContent() {
             const parsed = JSON.parse(data);
             if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
               fullText += parsed.delta.text;
-              if (currentIsHTML) {
-                resultBox.innerHTML = fullText;
-              } else {
-                resultBox.textContent = fullText;
-              }
+              resultBox.textContent = fullText;
             }
           } catch {}
         }
@@ -508,17 +472,7 @@ async function generateContent() {
     }
 
     currentResult = fullText;
-
-    if (currentIsHTML) {
-      resultBox.innerHTML = fullText;
-      resultBox.className = 'result-html';
-      codeBox.textContent = fullText;
-      tabs.style.display = 'flex';
-    } else {
-      resultBox.textContent = fullText;
-      resultBox.className = 'result-area';
-    }
-
+    resultBox.textContent = fullText;
     setStatus('gen-status', '✓ Konten berhasil digenerate!', 'ok');
 
   } catch (err) {
